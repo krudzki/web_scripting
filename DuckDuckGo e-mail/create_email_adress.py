@@ -10,8 +10,8 @@ def generate_random_alias(length=10):
 def generate_duck_aliases(count, filename="duck_aliases.txt"):
     """Generate a specified number of DuckDuckGo email aliases and save them to a file."""
     
-    # 8 characters is the default length of a randomly generated one-time DuckDuckGo address
-    ALIAS_LENGTH = 8
+    # characters is the default length of a randomly generated one-time DuckDuckGo address
+    ALIAS_LENGTH = 40
     DOMAIN = "@duck.com"
 
     unique_aliases = set()
@@ -20,7 +20,8 @@ def generate_duck_aliases(count, filename="duck_aliases.txt"):
     # Generate unique aliases
     while len(unique_aliases) < count:
         alias = generate_random_alias(ALIAS_LENGTH)
-        unique_aliases.add(alias + DOMAIN)
+        # unique_aliases.add(alias + DOMAIN)
+        unique_aliases.add(alias)
 
     # Write aliases to the specified file
     try:
