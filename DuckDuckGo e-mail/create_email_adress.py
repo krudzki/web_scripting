@@ -11,3 +11,30 @@ def generate_duck_aliases(count, filename="duck_aliases.txt"):
     """Generate a specified number of DuckDuckGo email aliases and save them to a file."""
     
     # 8 characters is the default length of a randomly generated one-time DuckDuckGo address
+    ALIAS_LENGTH = 8
+    DOMAIN = "@duck.com"
+
+    unique_aliases = set()
+    print(f"Generating {count} unique DuckDuckGo email aliases...")
+
+    # Generate unique aliases
+    while len(unique_aliases) < count:
+        alias = generate_random_alias(ALIAS_LENGTH)
+        unique_aliases.add(alias + DOMAIN)
+
+    # Write aliases to the specified file
+    try:
+        with open(filename, 'w') as file:
+            for alias in unique_aliases:
+                file.write(f"{alias}\n")
+        print(f"Successfully saved {count} aliases to {filename}")
+    except IOError as e:
+        print(f"An error occurred while writing to the file: {e}")
+
+# --- Script usage example ---
+# How many aliases to generate
+NUM_ALIASES = 100
+# Output file name
+OUTPUT_FILE = "duck_aliases.txt"
+
+generate_duck_aliases(NUM_ALIASES, OUTPUT_FILE)
