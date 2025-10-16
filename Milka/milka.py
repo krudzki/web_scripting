@@ -110,7 +110,7 @@ def generate_fingerprint():
     fingerprint_hash = mmh3.hash128(values_string, seed=31, signed=False)
     fingerprint = hex(fingerprint_hash)[2:]
 
-    print(f"[{datetime.now()}] Wygenerowany fingerprint: {fingerprint}")
+    print(f"[{datetime.now()}] Generated fingerprint: {fingerprint}")
     return fingerprint
 
 def wait_for_time(target_time):
@@ -118,12 +118,12 @@ def wait_for_time(target_time):
     time_to_wait = (target_time - now).total_seconds()
 
     if time_to_wait > 0:
-        print(f"[{now}] Czekam {time_to_wait:.2f} sekund do {target_time.strftime('%H:%M:%S')}...")
+        print(f"[{now}] Waiting {time_to_wait:.2f} seconds to {target_time.strftime('%H:%M:%S')}...")
         time.sleep(time_to_wait)
 
 def submit_form_directly():
     try:
-        print(f"[{datetime.now()}] Próba wysłania formularza bezpośrednio...")
+        print(f"[{datetime.now()}] Attempt to send the form directly...")
 
         fingerprint = generate_fingerprint()
 
@@ -176,8 +176,8 @@ def submit_form_directly():
 
         response = requests.post('https://promocjamilka.pl/add.php', headers=headers, data=body.encode('utf-8'))
 
-        print(f"[{datetime.now()}] Status odpowiedzi: {response.status_code}")
-        print(f"[{datetime.now()}] Treść odpowiedzi: {response.text}")
+        print(f"[{datetime.now()}] Response status: {response.status_code}")
+        print(f"[{datetime.now()}] Response content: {response.text}")
 
         response_text = response.text.lower()
 
@@ -185,37 +185,37 @@ def submit_form_directly():
             'dziękujemy' in response_text 
             or 'zgłoszenie zostało przyjęte' in response_text
         ):
-            print(f"[{datetime.now()}] SUKCES: Zgłoszenie przyjęte!")
+            print(f"[{datetime.now()}] SUCCESS: Application accepted!")
             return True
         elif 'podane dane zostały już zgłoszone' in response_text:
-            print(f"[{datetime.now()}] DANE JUŻ ZGŁOSZONE: {response.text.strip()}")
+            print(f"[{datetime.now()}] DATA ALREADY SUBMITTED: {response.text.strip()}")
             return False  # Ponów próbę później
         elif 'dzienna pula wyczerpała się' in response_text:
-            print(f"[{datetime.now()}] PULA WYCZERPANA: {response.text.strip()}")
+            print(f"[{datetime.now()}] POOL EXHAUSTED: {response.text.strip()}")
             return False  # Zatrzymaj na dziś
         elif (
             'niepoprawne' in response_text 
             or 'sprawdź poprawność' in response_text
         ):
-            print(f"[{datetime.now()}] BŁĘDNE DANE: {response.text.strip()}")
+            print(f"[{datetime.now()}] INCORRECT DATA: {response.text.strip()}")
             return False  # Ponów próbę
         elif (
             'wielokrotnego wysłania' in response_text 
             or 'nie jestem robotem' in response_text
         ):
-            print(f"[{datetime.now()}] BŁĄD CAPTCHA: {response.text.strip()}")
+            print(f"[{datetime.now()}] CAPTCHA ERROR: {response.text.strip()}")
             return False  # Ponów próbę
         else:
-            print(f"[{datetime.now()}] NIEZNANY WYNIK: {response.text.strip()}")
+            print(f"[{datetime.now()}] UNKNOWN RESULT: {response.text.strip()}")
             return True  # Załóż sukces
 
     except Exception as e:
-        print(f"[{datetime.now()}] Błąd podczas wysyłania formularza: {e}")
+        print(f"[{datetime.now()}] Error sending form: {e}")
         return False
 
 def main():
-    print("Uruchamianie bota do wysyłania formularza Milka...")
-    print(f"Docelowy URL: {MILKA_URL}")
+    print("Launching the bot to send the Milka form...")
+    print(f"Target URL: {MILKA_URL}")
     print("=" * 60)
 
     while True:
@@ -223,19 +223,19 @@ def main():
         target_run_time = now.replace(hour=8, minute=0, second=0, microsecond=500000)
 
         if now > target_run_time:
-            print(f"[{now}] Jest już po 8:00. Następna próba jutro.")
+            print(f"[{now}] It's alredy over 8:00. Next try tomorrow.")
             target_run_time += timedelta(days=1)
         
         wait_for_time(target_run_time)
         
-        print(f"[{datetime.now()}] Osiągnięto docelowy czas! Wysyłam formularz...")
+        print(f"[{datetime.now()}] Target time achieved! I'm sending the form ...")
 
         while not submit_form_directly():
             retry_delay = random.randint(1, 3)
-            print(f"[{datetime.now()}] Wysyłanie nie powiodło się. Ponawiam próbę za {retry_delay} sekundy...")
+            print(f"[{datetime.now()}] Sending failed. I'm trying again for {retry_delay} seconds...")
             time.sleep(retry_delay)
 
-        print(f"[{datetime.now()}] Zgłoszenie wysłane pomyślnie. Zatrzymuję bota.")
+        print(f"[{datetime.now()}] Your submission has been successfully sent. I'm stopping the bot.")
         break
 
 if __name__ == "__main__":
