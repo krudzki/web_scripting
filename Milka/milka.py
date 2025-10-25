@@ -3,6 +3,7 @@ import random
 from datetime import datetime, timedelta
 import requests
 import mmh3
+import chrome_data
 
 MILKA_URL = "https://promocjamilka.pl/"
 
@@ -16,15 +17,7 @@ USER_DATA = {
     "city":     "Uhmm"
 }
 
-# Słowniki 
-chrome_versions = [
-    "120.0.0.0", 
-    "119.0.0.0", 
-    "121.0.0.0", 
-    "118.0.0.0"
-]
-
-chrome_version = random.choice(chrome_versions)
+chrome_version = random.choice(chrome_data.chrome_versions)
 user_agent = f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome_version} Safari/537.36"
 
 def generate_fingerprint():
