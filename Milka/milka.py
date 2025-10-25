@@ -157,25 +157,25 @@ def submit_form_directly():
             return True
         elif 'podane dane zostały już zgłoszone' in response_text:
             print(f"[{datetime.now()}] DATA ALREADY SUBMITTED: {response.text.strip()}")
-            return False  # Ponów próbę później
+            return False  # Please try again later
         elif 'dzienna pula wyczerpała się' in response_text:
             print(f"[{datetime.now()}] POOL EXHAUSTED: {response.text.strip()}")
-            return False  # Zatrzymaj na dziś
+            return False  # Keep it for today
         elif (
             'niepoprawne' in response_text 
             or 'sprawdź poprawność' in response_text
         ):
             print(f"[{datetime.now()}] INCORRECT DATA: {response.text.strip()}")
-            return False  # Ponów próbę
+            return False  # Try again
         elif (
             'wielokrotnego wysłania' in response_text 
             or 'nie jestem robotem' in response_text
         ):
             print(f"[{datetime.now()}] CAPTCHA ERROR: {response.text.strip()}")
-            return False  # Ponów próbę
+            return False  # Try again
         else:
             print(f"[{datetime.now()}] UNKNOWN RESULT: {response.text.strip()}")
-            return True  # Załóż sukces
+            return True  # Assume success
 
     except Exception as e:
         print(f"[{datetime.now()}] Error sending form: {e}")
