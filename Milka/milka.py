@@ -3,7 +3,7 @@ import random
 from datetime import datetime, timedelta
 import requests
 import mmh3
-import chrome_data
+import config
 
 MILKA_URL = "https://promocjamilka.pl/"
 
@@ -17,41 +17,16 @@ USER_DATA = {
     "city":     "Uhmm"
 }
 
-chrome_version = random.choice(chrome_data.chrome_versions)
+chrome_version = random.choice(config.chrome_versions)
 user_agent = f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome_version} Safari/537.36"
 
 def generate_fingerprint():
     components = []
 
-    resolutions = [
-        "1920x1080", 
-        "1920x1200", 
-        "2560x1440", 
-        "1366x768", 
-        "1680x1050", 
-        "1440x900"
-    ]
-
-    languages = [
-        "pl-PL", 
-        "pl"
-    ]
-
-    screen_depths = [
-        "24", 
-        "32"
-    ]
-
-    platforms = [
-        "Win32", 
-        "Windows", 
-        "Win64"
-    ]
-
-    screen_resolution   = random.choice(resolutions)
-    screen_depth        = random.choice(screen_depths)
-    language            = random.choice(languages)
-    platform            = random.choice(platforms)
+    screen_resolution   = random.choice(config.resolutions)
+    screen_depth        = random.choice(config.screen_depths)
+    language            = random.choice(config.languages)
+    platform            = random.choice(config.platforms)
     cookie_enabled      = random.choice(["true", "true", "true", "false"])
     touch_support       = random.choice(["false", "false", "false", "false", "true"])
 

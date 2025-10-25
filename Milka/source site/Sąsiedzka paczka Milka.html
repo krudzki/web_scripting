@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K65PZ3F8');
+
+    </script>
+    <!-- End Google Tag Manager -->
+    
+    <title>Sąsiedzka paczka Milka</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Uzupełnij formularz zgłoszeniowy, odbierz paczkę dla siebie i sąsiada!">
+    <link rel="stylesheet" type="text/css" href="templates/css/style-v2.css">
+    <link rel="stylesheet" type="text/css" href="templates/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="templates/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="templates/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="templates/css/slick-theme.css">
+    <link rel="stylesheet" href="https://use.typekit.net/bki7uze.css">
+    <link rel="stylesheet" href="https://use.typekit.net/tio1mhg.css">
+
+    <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script type="text/javascript" src="templates/js/jquery.js"></script>
+    <script type="text/javascript" src="templates/js/jquery.mask.js"></script>
+    <script type="text/javascript" src="templates/js/flowscroll.js"></script>
+    <script type="text/javascript" src="templates/js/validation.js"></script>
+    <script type="text/javascript" src="templates/js/fingerprints/fingerprint2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script type="text/javascript" src="templates/js/slick.js"></script>
+
+</head>
+
+<body id="top">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K65PZ3F8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="popup_wrapper">
+        <div id="popup">
+            <img src="templates/images/paragon.png" />
+        </div>
+    </div>
+
+    <div id="navigation">
+        <a href="https://www.milka.com.pl/" target="_blank" id="logo_milka_mobile"></a>
+        <input id="burger" type="checkbox" />
+        <label for="burger" id="nav_cross">
+            <span class="cross"></span>
+            <span class="cross"></span>
+            <span class="cross"></span>
+        </label>
+        <nav>
+            <ul id="strus">
+                <li><a class="menu-item" onclick="clickMenu('home');">STRONA GŁÓWNA</a></li>
+                <li><a class="menu-item" onclick="clickMenu('nagrody');">ZASĄSIADUJMY SIĘ</a></li>
+				<li><a class="menu-item" onclick="clickMenu('wez-udzial');">FORMULARZ ZGŁOSZENIOWY</a></li>
+                <li><a class="menu-item" onclick="clickMenu('zasady');">REGULAMIN</a></li>
+                <li><a class="menu-item" onclick="clickMenu('kontakt');">KONTAKT</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Animated menu after scroll -->
+    <div id="nav_scrolled">
+        <div id="nav_scrolled_inner">
+            <a href="https://www.milka.com.pl/" target="_blank" id="logo"></a>
+            <ul id="menu_scrolled">
+                <li style="margin-left:0px;"><a id="nagrody-menu-link" class="menu-item" onclick="clickMenu('home');">STRONA GŁÓWNA</a></li>
+                <li><a id="nagrody-menu-link" class="menu-item" onclick="clickMenu('nagrody');">ZASĄSIADUJMY SIĘ</a></li>
+				<li><a id="enter-menu-link" class="menu-item" onclick="clickMenu('wez-udzial');">FORMULARZ ZGŁOSZENIOWY</a></li>
+                <li><a id="rules-menu-link" class="menu-item" onclick="clickMenu('zasady');">REGULAMIN</a></li>
+                <li><a id="kontakt-menu-link" class="menu-item" onclick="clickMenu('kontakt');">KONTAKT</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Animated menu end -->
+    <div id="error_wrapper">
+        <div id="errors">
+            <h1>Popraw poniższe błędy:</h1>
+            <ul id="error_list">
+                <li id="error_list_0"></li>
+                <li id="error_list_1"></li>
+                <li id="error_list_2"></li>
+                <li id="error_list_3"></li>
+                <li id="error_list_4"></li>
+                <li id="error_list_5"></li>
+                <li id="error_list_6"></li>
+                <li id="error_list_7"></li>
+                <li id="error_list_8"></li>
+                <li id="error_list_9"></li>
+                <li id="error_list_10"></li>
+                <li id="error_list_11"></li>
+            </ul>
+            <div id="errors_ok">OK</div>
+        </div>
+    </div>
+    <div id="positive_wrapper">
+        <div id="positive_msg">
+            <div id="positive_ok" class="close"></div>
+            <div id="positive_box">
+                <div id="positive_title" class="positive_title">Dziękujemy za zgłoszenie.</div>
+                <div id="positive_text" class="positive_text"></div>
+            </div>
+        </div>
+    </div>
+    <section id="home">
+        <div id="top_text1">ZASĄSIADUJ SIĘ</div>
+        <div id="top_text2">NA DZIEŃ DOBRY</div>
+        <a id="join" onclick="clickMenu('wez-udzial');">ODBIERZ PACZKĘ</a>
+    </section>
+    <section id="nagrody">
+        <div id="nagrody_text1">Jesteś świeżo po przeprowadzce i jeszcze nie znasz swoich sąsiadów? A może od dawna mijacie się bez słowa na korytarzu?</div>
+        <div id="nagrody_text2">Pomożemy Ci zrobić pierwszy krok do zasąsiadowania.</div>
+        <div id="nagrody_box1">
+            <img id="nagrody_box1_img_bottom" src="templates/images/paczka.png" alt="Specjalna paczka Milka"/>
+            <div id="nagrody_box1_text1">Odbierz specjalną paczkę,</div>
+            <div id="nagrody_box1_text2">która pomoże wykonać Ci pierwszy krok do nawiązania sąsiedzkiej znajomości. W środku znajdziesz trochę słodyczy i specjalną zawieszkę.</div>
+
+        </div>
+        <div id="nagrody_box2">
+            <div id="nagrody_box2_text1">Napisz na niej kilka słów, wsuń czekoladę w kieszonkę zawieszki i zawieś na drzwiach sąsiadów.</div>
+            <div id="nagrody_box2_text2">Miłego zasąsiadowania!</div>
+            <img id="nagrody_box2_img_bottom" src="templates/images/zawieszka.png" alt="Specjalna zawieszka Milka"/>
+        </div>
+    </section>
+
+    <section id="wez-udzial">
+        <div id="wez-udzial_title">ZAMÓW SĄSIEDZKĄ PACZKĘ</div>
+        
+				<form method="post" action="add.php" enctype="multipart/form-data" name="myform" id="myform">
+					<div id="main_form">
+                    <div id="form_box1">
+                        <input type="text" name="email" id="email" class="inputer" placeholder="Adres e-mail"></input>
+                        <input type="text" name="phone" id="phone" class="inputer" placeholder="Numer telefonu"></input>
+                        <input type="text" name="name" id="name" class="inputer" placeholder="Imię i nazwisko"></input>
+                    </div>
+                    <div id="form_box2">
+                        <input type="text" name="street" id="street" class="inputer" placeholder="Ulica"></input>
+                        <input type="text" name="house_nr" id="house_nr" class="inputer" placeholder="Numer domu/mieszkania"></input>
+                        <input type="text" name="postal" id="postal" class="inputer" placeholder="Kod pocztowy"></input>
+                        <input type="text" name="city" id="city"  class="inputer" placeholder="Miejscowość"></input>
+                    </div>
+                        
+                        <div class="data_box2 box1">
+                            <label class="switch2">
+                                <input type="checkbox" name="data1" id="data1">
+                                    <span class="slider2 round2"></span>
+                            </label>
+                            <div id="data_label_1" class="data_label2">Zapoznałem/-am się z treścią regulaminu „Sąsiedzka paczka Milka”, w tym z zawartą w nim klauzulą informacyjną dotyczącą przetwarzania danych osobowych i akceptuję jego wszystkie postanowienia.
+
+                            </div>
+                        </div>
+                        <div class="data_box2 box2">
+                            <label class="switch2">
+                                <input type="checkbox" name="data2" id="data2">
+                                    <span class="slider2 round2"></span>
+                            </label>
+                            <div id="data_label_2" class="data_label2">Oświadczam, że jestem osobą pełnoletnią
+i mam ukończone 18 lat.
+                            </div>
+                        </div>
+                        
+					<input type="hidden" id="dodaj_zgloszenie" name="dodaj_zgloszenie" value="correct"></input>
+					<input type="hidden" id="verification_token" name="verification_token" value="0e8cf8a471b49d2397b53c2baf61a8d2"></input>
+					<input type="hidden" id="fingerprint" name="fingerprint" value=""></input>
+					<input type="submit" value="WYŚLIJ ZGŁOSZENIE" id="button_send">
+                    <div id="shield">GWARANTUJEMY BEZPIECZEŃSTWO TWOICH DANYCH OSOBOWYCH. Organizator akcji promocyjnej wdrożył odpowiednie środki techniczne i organizacyjne, aby przetwarzanie danych osobowych jej uczestników odbywało się zgodnie z powszechnie obowiązującymi przepisami prawa, w tym zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (tzw. „RODO”). Dane osobowe uczestników akcji promocyjnej są niezbędne organizatorowi akcji jedynie w celu jej przeprowadzenia, szczegóły w REGULAMINIE.</div>
+                    
+					</div>	
+			
+				</form>    </section>
+    <section id="zasady">
+        <div id="zasady_title">ZASADY I REGULAMIN</div>
+            <div id="zasady_box1">
+                <img id="zasady_box1_img" src="templates/images/zasady1.png"/>
+                <div class="zasady_box_text1">Uzupełnij formularz zgłoszeniowy</div>
+                <div class="zasady_box_text2">Krok 1</div>
+
+            </div>
+            <div id="zasady_box2">
+                <img id="zasady_box2_img" src="templates/images/zasady2.png"/>
+                <div class="zasady_box_text1">Odbierz paczkę dla&nbsp;siebie&nbsp;i sąsiada</div>
+                <div class="zasady_box_text2">Krok 2</div>
+            </div>
+            <a href="regulaminy/Regulamin_promocji_Milka_sampling.pdf" target="_blank" id="rules_download">REGULAMIN</a>
+        <div id="zasady_bottom_text">Formularz jest otwarty codziennie od 8:00 do wyczerpania dziennej puli paczek. Pamiętaj, że pod jeden adres możesz zamówić tylko jedną paczkę. Łącznie w puli jest 3000 sąsiedzkich paczek. Promocja trwa od 15.09.2025 do 12.10.2025 lub do wyczerpania puli w danym dniu.
+        </div>
+        <div id="zasady_bottom_text2">CZY WIESZ, ŻE...</div>
+        <div id="zasady_bottom_text3">To kolejna odsłona kampanii Milka „Zasąsiadujmy się”, która zachęca do budowania bliższych relacji z sąsiadami poprzez drobne gesty życzliwości. </div>
+        
+
+    </section>
+    <section id="kontakt">
+        <div id="kontakt_title">KONTAKT</div>
+        <div id="kontakt_text1">Organizatorem konkursu jest Smolar Agencja Promocyjno-Reklamowa Sp. z o.o.</div>
+        <div id="kontakt_text2"><b>Jeśli masz pytania, zapraszamy do kontaktu:</b></div>
+        <div id="kontakt_box1">
+            <div id="kontakt_box1_img"></div>
+            <div id="kontakt_box1_phone">(42) 636 90 97</div>
+        </div>
+        <div id="kontakt_box2">
+            <div id="kontakt_box2_img"></div>
+            <a href="mailto:biuro@smolar.pl" id="kontakt_box2_email">biuro@smolar.pl</a>
+            <a href="https://www.smolar.pl/" target="_blank" id="kontakt_box2_link">www.smolar.pl</a>
+        </div>
+        <div id="kontakt_box3">
+            <div id="kontakt_box3_img"></div>
+            <div id="kontakt_box3_address">ul. Inżynierska 15 93-569 Łódź</div>
+        </div>
+        <a href="https://www.milka.com.pl/" target="_blank" id="kontakt_logo"></a>
+        <a id="kontakt_back" onclick="clickMenu('home');">DO GÓRY</a>
+        <div id="kontakt_text3">Milka jest znakiem towarowym należącym do grupy Mondelez International, używanym na podstawie licencji.</div>
+    </section>
+    <script type="text/javascript" src="templates/js/main-v2.js"></script>
+    <script>
+        $(document).ready(function($) {
+
+            $('#zasady_slider_mobile').slick({
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                prevArrow: $('#prev'),
+                nextArrow: $('#next'),
+                dots: true
+            });
+
+            $('#strus').hide();
+            $('#phone').mask("48 000-000-000");
+            $('#postal').mask("00-000");
+
+            $('.menu-item').click(function() {
+                $('#burger').prop("checked", false);
+            });
+            $('#nav_cross').click(function(event) {
+                if ($("#burger").is(':checked') != true) {
+                    $('#strus').fadeIn(300);
+                } else {
+                    $('#strus').fadeOut(500);
+
+                }
+            });
+            $('#positive_ok').click(function() {
+                $('#positive_wrapper').hide();
+            });
+            $('#custom_error_ok').click(function() {
+                $('#custom_error_wrapper').hide();
+            });
+            $('#positive_button').click(function() {
+                $('#positive_wrapper').hide();
+            });
+            $('#positive_next').click(function() {
+                $('#positive_wrapper').hide();
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
