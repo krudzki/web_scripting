@@ -95,15 +95,7 @@ def submit_form_directly():
 
         fingerprint = generate_fingerprint()
 
-        chromium_versions = [
-            "120", 
-            "119", 
-            "121", 
-            "118", 
-            "140"
-        ]
-
-        chromium_version = random.choice(chromium_versions)
+        chromium_version = random.choice(config.chromium_versions)
         sec_ch_ua = f'"Chromium";v="{chromium_version}", "Not=A?Brand";v="24", "Microsoft Edge";v="{chromium_version}"'
 
         headers = {

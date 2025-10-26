@@ -29,3 +29,11 @@ platforms = [
     "Windows", 
     "Win64"
 ]
+
+chromium_versions = [
+            "120", 
+            "119", 
+            "121", 
+            "118", 
+            "140"
+        ]
