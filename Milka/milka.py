@@ -2,7 +2,6 @@ import time
 import random
 from datetime import datetime, timedelta
 import requests
-import mmh3
 import config
 
 MILKA_URL = "https://promocjamilka.pl/"
@@ -12,74 +11,13 @@ USER_DATA = {
     "phone":    "48 000-00-000",
     "name":     "Sweeet Chocolate",
     "street":   "Uhmm",
-    "house_nr": "0", # Numer domu/mieszkania albo poprostu np 3 albo 12/19 albo cos nie wiem
+    "house_nr": "0", 
     "postal":   "00-000",
     "city":     "Uhmm"
 }
 
 chrome_version = random.choice(config.chrome_versions)
 user_agent = f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{chrome_version} Safari/537.36"
-
-def generate_fingerprint():
-    components = []
-
-    screen_resolution   = random.choice(config.resolutions)
-    screen_depth        = random.choice(config.screen_depths)
-    language            = random.choice(config.languages)
-    platform            = random.choice(config.platforms)
-    cookie_enabled      = random.choice(["true", "true", "true", "false"])
-    touch_support       = random.choice(["false", "false", "false", "false", "true"])
-
-    components.append({
-        "key": "user_agent", 
-        "value": user_agent
-    })
-
-    components.append({
-        "key": "screen_resolution", 
-        "value": screen_resolution
-    })
-
-    components.append({
-        "key": "screen_depth", 
-        "value": screen_depth
-    })
-
-    components.append({
-        "key": "timezone", 
-        "value": "Europe/Warsaw"
-    })
-
-    components.append({
-        "key": "language", 
-        "value": language
-    })
-
-    components.append({
-        "key": "platform", 
-        "value": platform
-    })
-    
-    components.append({
-        "key": "cookie_enabled", 
-        "value": cookie_enabled
-    })
-
-    components.append({
-        "key": "touch_support", 
-        "value": touch_support
-    })
-
-    values_string = ""
-
-    for comp in components:
-        values_string += comp["value"]
-
-    fingerprint_hash = mmh3.hash128(values_string, seed=31, signed=False)
-    fingerprint = hex(fingerprint_hash)[2:]
-
-    print(f"[{datetime.now()}] Generated fingerprint: {fingerprint}")
-    return fingerprint
 
 def wait_for_time(target_time):
     now = datetime.now()
@@ -93,17 +31,8 @@ def submit_form_directly():
     try:
         print(f"[{datetime.now()}] Attempt to send the form directly...")
 
-        fingerprint = generate_fingerprint()
-
-        chromium_versions = [
-            "120", 
-            "119", 
-            "121", 
-            "118", 
-            "140"
-        ]
-
-        chromium_version = random.choice(chromium_versions)
+        fingerprint = fingerprint.generate_random()
+        chromium_version = random.choice(config.chromium_versions)
         sec_ch_ua = f'"Chromium";v="{chromium_version}", "Not=A?Brand";v="24", "Microsoft Edge";v="{chromium_version}"'
 
         headers = {
@@ -157,25 +86,25 @@ def submit_form_directly():
             return True
         elif 'podane dane zostały już zgłoszone' in response_text:
             print(f"[{datetime.now()}] DATA ALREADY SUBMITTED: {response.text.strip()}")
-            return False  # Ponów próbę później
+            return False  # Please try again later
         elif 'dzienna pula wyczerpała się' in response_text:
             print(f"[{datetime.now()}] POOL EXHAUSTED: {response.text.strip()}")
-            return False  # Zatrzymaj na dziś
+            return False  # Keep it for today
         elif (
             'niepoprawne' in response_text 
             or 'sprawdź poprawność' in response_text
         ):
             print(f"[{datetime.now()}] INCORRECT DATA: {response.text.strip()}")
-            return False  # Ponów próbę
+            return False  # Try again
         elif (
             'wielokrotnego wysłania' in response_text 
             or 'nie jestem robotem' in response_text
         ):
             print(f"[{datetime.now()}] CAPTCHA ERROR: {response.text.strip()}")
-            return False  # Ponów próbę
+            return False  # Try again
         else:
             print(f"[{datetime.now()}] UNKNOWN RESULT: {response.text.strip()}")
-            return True  # Załóż sukces
+            return True  # Assume success
 
     except Exception as e:
         print(f"[{datetime.now()}] Error sending form: {e}")
